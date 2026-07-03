@@ -4,16 +4,16 @@ author: "AgriAGI Research, Zhejiang University"
 date: "`r Sys.Date()`"
 output: 
   html_document:
-    toc: true             # Enable table of contents
-    toc_float: true       # Float the table of contents on the left side
-    number_sections: true # Automatically number sections
-    theme: cosmo          # Web theme style (options: flatly, journal, readable)
+    toc: true             
+    toc_float: true       
+    number_sections: true 
+    theme: cosmo          
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk $ set(echo = FALSE, warning = FALSE, message = FALSE)
 
-# load required packages
+
 library(readxl)
 library(kableExtra)
 library(dplyr)
@@ -23,19 +23,27 @@ library(dplyr)
 # Data overview
 
 This page presents the survey data of Agricultural Large Language Models (AgriLLMs).
-Data Source: AgriAGI Research, Zhejiang University
+
+**Credit:**
+
+AgriAGI Research, Zhejiang University
+
+Source code and raw data: https://github.com/AgriAGI-Research/AgriLLM_survey_project
+
 Last Updated: `r file.info("AgriLLM_survey_dat/AgriLLM_survey 20260420.xlsx")$mtime`
+
+**Notes:**
+
+If you spot any mistakes, please contact us via Github issue.
 
 # Data preview
 
 Below is a preview of the first 10 rows of the dataset:
 
 ```{r}
-# dead the Excel file using a relative path pointing to the subfolder
-# note: R handles spaces in filenames correctly, but using underscores is recommended for future files
+
 df <- read_excel("AgriLLM_survey_dat/AgriLLM_survey 20260420.xlsx")
 
-# render a visually appealing table using kableExtra
 df %>%
   head(10) %>%
   kable("html") %>%
