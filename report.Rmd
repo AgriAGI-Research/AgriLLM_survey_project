@@ -1,0 +1,65 @@
+---
+title: "AgriLLM Survey Data"
+author: "AgriAGI Research, Zhejiang University"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true             # Enable table of contents
+    toc_float: true       # Float the table of contents on the left side
+    number_sections: true # Automatically number sections
+    theme: cosmo          # Web theme style (options: flatly, journal, readable)
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk $ set(echo = FALSE, warning = FALSE, message = FALSE)
+
+# load required packages
+library(readxl)
+library(kableExtra)
+library(dplyr)
+```
+
+
+# Data overview
+
+This page presents the survey data of Agricultural Large Language Models (AgriLLMs).
+Data Source: AgriAGI Research, Zhejiang University
+Last Updated: `r file.info("AgriLLM_survey_dat/AgriLLM_survey 20260420.xlsx")$mtime`
+
+# Data preview
+
+Below is a preview of the first 10 rows of the dataset:
+
+```{r}
+# dead the Excel file using a relative path pointing to the subfolder
+# note: R handles spaces in filenames correctly, but using underscores is recommended for future files
+df <- read_excel("AgriLLM_survey_dat/AgriLLM_survey 20260420.xlsx")
+
+# render a visually appealing table using kableExtra
+df %>%
+  head(10) %>%
+  kable("html") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
+```
+
+
+
+# Complete dataset
+
+The full survey dataset containing all 4 columns is shown below. A scrollable box is applied for better viewing experience if the dataset is large.
+
+```{r}
+# render the complete dataset with a fixed-height scrollable container
+df %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling("striped", full_width = TRUE) %>%
+  scroll_box(width = "100%", height = "500px")
+```
+
+
+
+
+
+
+
+
